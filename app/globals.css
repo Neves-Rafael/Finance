@@ -41,6 +41,8 @@ body {
     --chart-5: 27 87% 67%;
   }
 
+  /* --secondary: 240 3.7% 15.9% */
+
   .dark {
     --background: 20 14.3% 4.1%;
     --foreground: 0 0% 95%;
@@ -49,7 +51,7 @@ body {
     --popover: 0 0% 9%;
     --popover-foreground: 0 0% 95%;
     --primary: 102 59% 44%; /* Adjusted for #55B02E */
-    --primary-foreground: 0 0 100% --secondary: 240 3.7% 15.9%;
+    --primary-foreground: 0 0 100%;
     --secondary-foreground: 0 0 100%;
     --muted: 0 0% 15%;
     --muted-foreground: 240 5% 64.9%;
