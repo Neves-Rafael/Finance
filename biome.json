@@ -20,11 +20,13 @@
       "unsafeParameterDecoratorsEnabled": true
     }
   },
-
   "linter": {
     "enabled": true,
     "rules": {
       "recommended": true,
+      "nursery": {
+        "useSortedClasses": "info"
+      },
       "correctness": {
         "noUnusedImports": "error"
       },
