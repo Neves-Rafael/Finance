@@ -1,3 +1,3 @@
-export default function Subscription() {
+export default function SubscriptionPage() {
   return <h1>subscription</h1>;
 }
