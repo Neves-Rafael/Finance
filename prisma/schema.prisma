@@ -45,4 +45,5 @@ model Transaction {
   data          DateTime
   created_at    DateTime                 @default(now())
   updated_at    DateTime                 @updatedAt
+  userId        String
 }
