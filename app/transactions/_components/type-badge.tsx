@@ -6,12 +6,12 @@ interface TransactionTypeBadgeProps {
   transaction: Transaction;
 }
 
-export default function TransactionTypeBadge({ transaction }: TransactionTypeBadgeProps) {
+const TransactionTypeBadge = ({ transaction }: TransactionTypeBadgeProps) => {
   if (transaction.type === TransactionType.DEPOSIT) {
     return (
       <Badge className="bg-green-950 font-bold text-primary hover:bg-muted">
         <Circle className="mr-2 w-2.5 fill-primary" />
-        Deposito
+        Depósito
       </Badge>
     );
   }
@@ -31,4 +31,6 @@ export default function TransactionTypeBadge({ transaction }: TransactionTypeBad
       Investimento
     </Badge>
   );
-}
+};
+
+export default TransactionTypeBadge;
