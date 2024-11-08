@@ -10,7 +10,7 @@ datasource db {
 enum TransactionType {
   DEPOSIT
   EXPENSE
-  INVESTIMENT
+  INVESTMENT
 }
 
 enum TransactionCategory {
