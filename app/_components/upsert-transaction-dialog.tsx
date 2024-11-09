@@ -2,7 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { TransactionCategory, TransactionPaymentMethod, TransactionType } from "@prisma/client";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { upsertTransaction } from "../_actions/add-transaction";
+import { upsertTransaction } from "../_actions/upsert-transaction";
 import {
   TRANSACTION_CATEGORY_OPTIONS,
   TRANSACTION_PAYMENT_METHOD_OPTIONS,
