@@ -4,6 +4,7 @@ import { db } from "@/app/_lib/prisma";
 import { auth } from "@clerk/nextjs/server";
 import { TransactionCategory, TransactionPaymentMethod, TransactionType } from "@prisma/client";
 import { revalidatePath } from "next/cache";
+import { upsertTransactionSchema } from "./schema";
 
 interface UpsertTransactionParams {
   id?: string;

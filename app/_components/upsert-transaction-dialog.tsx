@@ -1,7 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { TransactionCategory, TransactionPaymentMethod, TransactionType } from "@prisma/client";
 import { useForm } from "react-hook-form";
-import { boolean, z } from "zod";
+import { z } from "zod";
 import { upsertTransaction } from "../_actions/add-transaction";
 import {
   TRANSACTION_CATEGORY_OPTIONS,
@@ -58,7 +58,7 @@ export function UpsertTransactionDialog({
   defaultValues,
   transactionId,
 }: UpsertTransactionDialogProps) {
-  const form = useForm<z.infer<typeof formSchema>>({
+  const form = useForm<FormSchema>({
     resolver: zodResolver(formSchema),
     defaultValues: defaultValues ?? {
       amount: 10,
@@ -80,7 +80,7 @@ export function UpsertTransactionDialog({
     }
   };
 
-  const isUpdate = boolean(transactionId);
+  const isUpdate = Boolean(transactionId);
 
   return (
     <Dialog
