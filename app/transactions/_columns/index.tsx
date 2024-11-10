@@ -38,7 +38,7 @@ export const TransactionColumns: ColumnDef<Transaction>[] = [
     accessorKey: "data",
     header: "Data",
     cell: ({ row: { original: transaction } }) =>
-      new Date(transaction.data).toLocaleDateString("pt-BR", {
+      new Date(transaction.date).toLocaleDateString("pt-BR", {
         day: "2-digit",
         month: "long",
         year: "numeric",
