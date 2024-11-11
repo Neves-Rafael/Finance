@@ -23,11 +23,11 @@ export default async function Home({ searchParams: { month } }: HomeProps) {
   }
 
   if (!month) {
-    return redirect("?month=01");
+    return redirect(`?month=${new Date().getMonth() + 1}`);
   }
 
   if (!isMatch(month, "MM")) {
-    return redirect("?month=01");
+    return redirect(`?month=${new Date().getMonth() + 1}`);
   }
 
   const dashboard = await getDashboard(month);

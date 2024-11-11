@@ -18,7 +18,7 @@ export default async function TransactionPage() {
   return (
     <>
       <Navbar />
-      <div className="space-y-10 overflow-hidden p-10">
+      <div className="flex flex-col space-y-10 overflow-hidden p-10">
         <div className="flex w-full items-center justify-between ">
           <h1 className="font-bold text-2xl">Transações</h1>
           <AddTransactionButton />

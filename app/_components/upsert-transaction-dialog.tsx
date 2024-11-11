@@ -92,7 +92,6 @@ export function UpsertTransactionDialog({
         }
       }}
     >
-      {/* <DialogTrigger asChild></DialogTrigger> */}
       <DialogContent>
         <DialogHeader>
           <DialogTitle>{isUpdate ? "Atualizar" : "Adicionar"} Transação</DialogTitle>
@@ -124,6 +123,7 @@ export function UpsertTransactionDialog({
                   <FormControl>
                     <MoneyInput
                       placeholder="Digite o valor"
+                      value={field.value}
                       onValueChange={({ floatValue }) => {
                         field.onChange(floatValue);
                       }}
