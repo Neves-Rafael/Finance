@@ -70,36 +70,24 @@ export default function TransactionsPieCharts({
         </ChartContainer>
         <div className="space-y-3">
           <PercentagemItem
-            icon={
-              <TrendingUpIcon
-                size={24}
-                className="rounded-sm border-4 border-green-950 bg-green-950 text-green-500"
-              />
-            }
+            icon={<TrendingUpIcon size={24} className="text-green-500" />}
             title="Receita"
             typePercentage={typesPercentage[TransactionType.DEPOSIT]}
+            color="green"
           />
 
           <PercentagemItem
-            icon={
-              <TrendingDownIcon
-                size={24}
-                className="rounded-sm border-4 border-red-950 bg-red-950 text-red-500"
-              />
-            }
+            icon={<TrendingDownIcon size={24} className="text-red-500" />}
             title="Despesas"
             typePercentage={typesPercentage[TransactionType.EXPENSE]}
+            color="red"
           />
 
           <PercentagemItem
-            icon={
-              <PiggyBank
-                size={24}
-                className="rounded-sm border-4 border-zinc-800 bg-zinc-800 text-zinc-100"
-              />
-            }
+            icon={<PiggyBank size={24} className="text-zinc-100" />}
             title="Investimento"
             typePercentage={typesPercentage[TransactionType.INVESTMENT]}
+            color="zinc"
           />
         </div>
       </CardContent>
