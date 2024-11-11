@@ -1,48 +1,21 @@
-import { db } from "@/app/_lib/prisma";
 import { PiggyBankIcon, TrendingDown, TrendingUpIcon, Wallet } from "lucide-react";
 import { SummaryCardInfo } from "./summary-card-info";
 
 interface summaryCardsProps {
   month: string;
+  balance: number;
+  depositsTotal: number;
+  investmentsTotal: number;
+  expensesTotal: number;
 }
 
-export async function SummaryCards({ month }: summaryCardsProps) {
-  const whereDateFilter = {
-    date: {
-      gte: new Date(`2024-${month}-01`),
-      lte: new Date(`2024-${month}-31`),
-    },
-  };
-
-  const depositsTotal = Number(
-    (
-      await db.transaction.aggregate({
-        where: { ...whereDateFilter, type: "DEPOSIT" },
-        _sum: { amount: true },
-      })
-    )?._sum?.amount
-  );
-
-  const investmentsTotal = Number(
-    (
-      await db.transaction.aggregate({
-        where: { ...whereDateFilter, type: "INVESTMENT" },
-        _sum: { amount: true },
-      })
-    )?._sum?.amount
-  );
-
-  const expensesTotal = Number(
-    (
-      await db.transaction.aggregate({
-        where: { ...whereDateFilter, type: "EXPENSE" },
-        _sum: { amount: true },
-      })
-    )?._sum?.amount
-  );
-
-  const balance = depositsTotal - investmentsTotal - expensesTotal;
-
+export async function SummaryCards({
+  month,
+  balance,
+  expensesTotal,
+  depositsTotal,
+  investmentsTotal,
+}: summaryCardsProps) {
   return (
     <div className="space-y-6">
       <SummaryCardInfo icon={<Wallet size={16} />} title="Saldo" size="large" amount={balance} />

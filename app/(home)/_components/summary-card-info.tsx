@@ -12,7 +12,7 @@ interface SummaryCardInfoProps {
 export function SummaryCardInfo({ icon, title, amount, size = "small" }: SummaryCardInfoProps) {
   return (
     <div>
-      <Card>
+      <Card className={`${size === "large" ? "bg-zinc-800" : ""}`}>
         <CardHeader className="flex-row items-center gap-4 ">
           {icon}
           <p
