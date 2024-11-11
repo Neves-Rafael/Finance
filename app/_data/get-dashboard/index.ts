@@ -1,6 +1,6 @@
 import { db } from "@/app/_lib/prisma";
 import { TransactionType } from "@prisma/client";
-import { TransactionPercentagePerType } from "./types";
+import { TotalExpensePerCategory, TransactionPercentagePerType } from "./types";
 
 export const getDashboard = async (month: string) => {
   const whereDateFilter = {
@@ -75,6 +75,7 @@ export const getDashboard = async (month: string) => {
     totalAmount: Number(category._sum.amount),
     percentageOfTotal: Math.round((Number(category._sum.amount) / Number(expensesTotal)) * 100),
   }));
+
   const lastTransactions = await db.transaction.findMany({
     where: whereDateFilter,
     orderBy: { date: "desc" },
@@ -87,5 +88,6 @@ export const getDashboard = async (month: string) => {
     investmentsTotal,
     expensesTotal,
     typesPercentage,
+    totalExpensePerCategory,
   };
 };
