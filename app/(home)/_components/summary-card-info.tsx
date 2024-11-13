@@ -7,9 +7,16 @@ interface SummaryCardInfoProps {
   title: string;
   amount: number;
   size?: "small" | "large";
+  userCanAddTransaction?: boolean;
 }
 
-export function SummaryCardInfo({ icon, title, amount, size = "small" }: SummaryCardInfoProps) {
+export function SummaryCardInfo({
+  userCanAddTransaction,
+  icon,
+  title,
+  amount,
+  size = "small",
+}: SummaryCardInfoProps) {
   return (
     <div>
       <Card className={`${size === "large" ? "bg-zinc-800" : ""}`}>
@@ -25,7 +32,9 @@ export function SummaryCardInfo({ icon, title, amount, size = "small" }: Summary
           <p className={` font-bold ${size === "small" ? "text-2xl" : "text-4xl"}`}>
             {Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(amount)}
           </p>
-          {size === "large" && <AddTransactionButton />}
+          {size === "large" && (
+            <AddTransactionButton userCanAddTransaction={userCanAddTransaction} />
+          )}
         </CardContent>
       </Card>
     </div>
