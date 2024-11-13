@@ -24,7 +24,7 @@ export function PercentagemItem({ icon, title, typePercentage, color }: Percenta
         <div className={`p-2 ${getIconColor(color)} rounded-lg`}>{icon}</div>
         <p className="text-muted-foreground">{title}</p>
       </div>
-      <p className="font-bold">{typePercentage}%</p>
+      <p className="font-bold">{typePercentage ? `${typePercentage} %` : "0 %"}</p>
     </div>
   );
 }
