@@ -14,7 +14,10 @@ export default async function TransactionPage() {
     return redirect("/login");
   }
 
-  const transaction = await db.transaction.findMany({ where: { userId } });
+  const transaction = await db.transaction.findMany({
+    where: { userId },
+    orderBy: { date: "desc" },
+  });
 
   const userCanAddTransaction = await canUserAddTransaction();
   return (
@@ -27,7 +30,7 @@ export default async function TransactionPage() {
         </div>
 
         <ScrollArea>
-          <DataTable columns={TransactionColumns} data={transaction} />
+          <DataTable columns={TransactionColumns} data={JSON.parse(JSON.stringify(transaction))} />
         </ScrollArea>
       </div>
     </>
