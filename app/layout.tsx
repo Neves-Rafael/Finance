@@ -12,6 +12,9 @@ const mulish = Mulish({
 export const metadata: Metadata = {
   title: "Finance App",
   description: "Finance App to improve your money!",
+  icons: {
+    icon: "/logo-icon.svg",
+  },
 };
 
 export default function RootLayout({
