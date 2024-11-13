@@ -1,7 +1,8 @@
-import { auth } from "@clerk/nextjs/server";
+import { auth, clerkClient } from "@clerk/nextjs/server";
 import { CheckIcon, XIcon } from "lucide-react";
 import { redirect } from "next/navigation";
 import { Navbar } from "../_components/navbar";
+import { Badge } from "../_components/ui/badge";
 import { Card, CardContent, CardHeader } from "../_components/ui/card";
 import { AcquirePlanButton } from "./_components/acquire-plan-button";
 
@@ -11,15 +12,26 @@ export default async function SubscriptionPage() {
     return redirect("/login");
   }
 
+  const user = await (await clerkClient()).users.getUser(userId);
+  const hasPremiumPlan = user?.publicMetadata.subscriptionPlan === "premium";
+
   return (
     <>
       <Navbar />
-      <div className="space-y-6 p-10">
-        <h1 className="font-bold text-2xl">Assinatura</h1>
+      <div className="flex flex-col items-center space-y-6 p-10">
+        <h1 className="font-bold text-3xl">Assinaturas</h1>
 
         <div className="flex gap-6">
           <Card className="w-[450px]">
-            <CardHeader className="border-b border-solid py-8">
+            <CardHeader className="relative border-b border-solid py-8">
+              {!hasPremiumPlan && (
+                <Badge
+                  title="ativo"
+                  className="absolute top-4 left-4 bg-primary/10 font-bold text-base text-primary "
+                >
+                  Ativo
+                </Badge>
+              )}
               <h2 className="text-center font-semibold text-2xl">Plano Básico</h2>
               <div className="flex items-center justify-center gap-3">
                 <span className="text-4xl">R$</span>
@@ -40,7 +52,15 @@ export default async function SubscriptionPage() {
           </Card>
 
           <Card className="w-[450px]">
-            <CardHeader className="border-b border-solid py-8">
+            <CardHeader className="relative border-b border-solid py-8">
+              {hasPremiumPlan && (
+                <Badge
+                  title="ativo"
+                  className="absolute top-4 left-4 bg-primary/10 font-bold text-base text-primary "
+                >
+                  Ativo
+                </Badge>
+              )}
               <h2 className="text-center font-semibold text-2xl">Plano Premium</h2>
               <div className="flex items-center justify-center gap-3">
                 <span className="text-4xl">R$</span>
